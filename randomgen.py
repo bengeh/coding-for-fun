@@ -1,7 +1,9 @@
 import requests
 import json
 from PIL import Image
-from numpy import random
+from pylab import imshow, show, get_cmap
+
+
 
 def randomNumber():
 
@@ -38,17 +40,15 @@ def randomNumber():
 
 
 def rgbpicture():
-    print("inside rgb")
-    print(random.random((50,50)))
+
     img = Image.new( 'RGB', (255,255), "black") # create a new black image
     pixels = img.load() # create the pixel map
-    no = randomNumber()
-    no1 = randomNumber()
-    for i in no:    # for every pixel:
-        for j in no1:
-            pixels[i,j] = (i, j, 100) # set the colour accordingly
 
-    img.show()
+    Z = [randomNumber(), randomNumber()]   # Test data
+
+    imshow(Z, cmap=get_cmap("Spectral"), interpolation='nearest')
+    show()
+
     
 
 
