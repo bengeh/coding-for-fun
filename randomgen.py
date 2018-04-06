@@ -9,10 +9,10 @@ def randomNumber():
             "jsonrpc": "2.0",
             "method": "generateIntegers",
             "params": {
-                "apiKey": "<insert-API-key here>",
-                "n": 50,
+                "apiKey": "<enter api key here>",
+                "n": 128,
                 "min": 0,
-                "max": 100,
+                "max": 500,
             },
         "id" : 6
         }
@@ -27,7 +27,7 @@ def rgbpicture():
 
     img = Image.new( 'RGB', (255,255), "black") # create a new black image
     pixels = img.load() # create the pixel map
-    Z = [randomNumber(), randomNumber()]   # Test data
+    Z = [randomNumber()] * 128   # Test data
     imshow(Z, cmap=get_cmap("Spectral"), interpolation='nearest')
     show()
     
