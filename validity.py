@@ -12,8 +12,8 @@ def validity(n , value, suits):
         print("Perfect Deck")
 
 
-#Given a string where each letter appears exactly twice, remove one of the two copies of each letter.
-#
+#Found from topcoder:
+#Hero has a string of lowercase English letters. Each letter that appears in the string appears exactly twice. Hero now wants to remove one half of his string. More precisely, he wants to remove one of the two copies of each letter in his string. The order of the letters he does not remove will remain unchanged. If there are multiple ways to remove the letters, Hero prefers the ones where the resulting string begins with a smaller letter (i.e., a letter that is earlier in the alphabet). You are given the String s containing Hero's string. Find the smallest letter that can appear at the beginning of the string after Hero removes half of the letters. Return a String with a single character: that letter.
 
 
 
