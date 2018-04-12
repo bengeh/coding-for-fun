@@ -29,7 +29,58 @@ def stringItr(word):
         d[x] = x
     print(d)
 
+    
+    
+#problem from SPOJ
+# given a set of inputs, stop processing after reading number 42
+def listtt():
+    var = int(input())
+    flag = True
+    if var == 42:
+        flag = False
+    while flag:
+        if var == 42:
+            flag = False
+        else:
+            print(var)
+            var = int(input())
+    return var
+
+#user can specify how many test case he/she wants
+#finding prime no. given user input of min and max using Sieve of Eratosthenes
+def primeNo():
+    testCase = int(input())
+    notPrime = set()
+    prime = []
+    tmp = []
+    for a in range(0,testCase):
+        min, max = list(map(int, input().split()))
+        tmp.append(min)
+        tmp.append(max)
+
+    for a in range(0, len(tmp)-1):
+        min = tmp[a]
+        max = tmp[a+1] + 1
+        for i in range(2,max):
+            if i in notPrime:
+                continue
+            for j in range(i*i, max, i):
+                notPrime.add(j)
+            if i >= min:
+                prime.append(i)
+        prime.append('')
+    for i in prime:
+        print(i)
+
+    return prime
+
+        
+
+    
 
 if __name__ == '__main__':
-    validity(3, {1,2,1}, "hch")
+    #primeNo()
+    #validity(3, {1,2,1}, "hch")
     #stringItr("bbaa")
+    #listtt()
+    
