@@ -9,7 +9,7 @@ def randomNumber():
             "jsonrpc": "2.0",
             "method": "generateIntegers",
             "params": {
-                "apiKey": "cbf83332-7d2a-4852-ba5b-dc6ec38e8328",
+                "apiKey": "<insert-API-key>",
                 "n": 128,
                 "min": 0,
                 "max": 500,
