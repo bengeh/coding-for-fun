@@ -2,7 +2,9 @@
 #Find if the deck is perfect(all cards in deck are distinct and for any two cards (v1,s1) and (v2,s2), there exist (v1,s2) and (v2,s1)
 
 def validity(n , value, suits):
-    NumberOfValues = len(set(value))
+    NumberOfValues = len(set(value)) #the use of set here eliminates duplicates, can use this to our advantage and get the not perfect deck
+    print(NumberOfValues)
+    print(set(value)) #returns 1 when value is {1,1,1}, returns 1,2 when value is {1,2,1}
     NumberOfSuits = len(set(suits))
     if NumberOfSuits * NumberOfValues != n:
         print("Not Perfect")
@@ -29,5 +31,5 @@ def stringItr(word):
 
 
 if __name__ == '__main__':
-    validity(3, {1,1,1}, "hch")
+    validity(3, {1,2,1}, "hch")
     #stringItr("bbaa")
