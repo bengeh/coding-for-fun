@@ -1,9 +1,9 @@
 package main
 import (
     "fmt"
-    //"bufio"
-    //"os"
-   // "strconv"
+    "bufio"
+    "os"
+   "strconv"
    "regexp"
    "log"
    "strings"
@@ -61,18 +61,8 @@ func ReverseWord(text string) string{
 }
 
 
-func main() {
-
-    //for the reverse challenge
-    /*
-    scanner := bufio.NewScanner(os.Stdin)
-    fmt.Print("Enter your text: ")
-    scanner.Scan()
-    text := scanner.Text()
-    word := ReverseWord(text)
-    fmt.Print(word)
-    */
-    
+//creating a random map
+func MapCreation() {
     //understanding maps in Golang
     //create a map for fun
     var m = make(map[string]int)
@@ -89,23 +79,45 @@ func main() {
     for key, value := range m{
         fmt.Print("key: ", key, "Value: ", value)
     }
+}
 
-    //for the longest word challenge
-    /*scanner := bufio.NewScanner(os.Stdin)
-    fmt.Print("Enter your text: ")
+
+func main() {
+    scanner := bufio.NewScanner(os.Stdin)
+    fmt.Print(`
+    1. Reverse Challenge
+    2. Longest Word Challenge
+    3. Factorial Challenge
+    4. Map Example
+    Please choose a number: `)
     scanner.Scan()
-    text := scanner.Text()
-    word := LongestWord(text)
-    fmt.Print(word)
-    */
-    
-    /*
-    // for the factorial example 
-    fmt.Print("Enter your number: ")
-    scanner.Scan()
-    number := scanner.Text()
-    i, _ := strconv.Atoi(number)
-    Fact := FirstFactorial(i)
-    fmt.Print(Fact)
-    */
+    switch text := scanner.Text(); text{
+        case "1":
+            fmt.Println("This is the reverse challenge")
+            fmt.Print("Enter your text here: ")
+            scanner.Scan()
+            reverseText := scanner.Text()
+            word := ReverseWord(reverseText)
+            fmt.Print(word)
+        case "2":
+            fmt.Println("This is for the longest word challenge")
+            fmt.Print("Enter your text here: ")
+            scanner.Scan()
+            longText := scanner.Text()
+            word := LongestWord(longText)
+            fmt.Print(word)
+        case "3":
+            fmt.Println("This is the factorial example")
+            fmt.Print("Enter your number: ")
+            scanner.Scan()
+            number := scanner.Text()
+            i, _ := strconv.Atoi(number)
+            Fact := FirstFactorial(i)
+            fmt.Print(Fact)
+        case "4":
+            fmt.Println("This is how a map looks like in Go")
+            MapCreation()
+        default:
+            fmt.Println("Default")
+    }
 }
