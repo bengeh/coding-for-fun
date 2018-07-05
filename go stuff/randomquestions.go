@@ -7,6 +7,7 @@ import (
    "regexp"
    "log"
    "strings"
+   "unicode"
 )
 
 //Factorial example for Golang
@@ -81,6 +82,37 @@ func MapCreation() {
     }
 }
 
+//Letters substituition
+func swapText(str string) string{
+  // code goes here   
+  // Note: feel free to modify the return type of this function 
+  out := []rune(str)
+  for i:=0; i<len(out); i++{
+      if unicode.IsLetter(out[i]){
+          if out[i] == 122{
+              out[i] = 97
+          }else if out[i] == 32{
+              out[i] = 32
+          }else{
+              out[i] += 1
+          }
+            switch out[i]{
+                  case 97:
+                    out[i] = 65
+                    case 101:
+                    out[i] = 69
+                    case 105:
+                    out[i] = 73
+                    case 111:
+                    out[i] = 79
+                    case 117:
+                    out[i] = 85
+              }
+      }
+  }
+  return string(out)
+            
+}
 
 func main() {
     scanner := bufio.NewScanner(os.Stdin)
@@ -89,6 +121,7 @@ func main() {
     2. Longest Word Challenge
     3. Factorial Challenge
     4. Map Example
+    5. Letters substituition
     Please choose a number: `)
     scanner.Scan()
     switch text := scanner.Text(); text{
@@ -117,6 +150,13 @@ func main() {
         case "4":
             fmt.Println("This is how a map looks like in Go")
             MapCreation()
+        case "5":
+            fmt.Println("This is how you substitute letters to the next (A->B, Z->A, a->b, z->a, vowels are caps, and all non-letters remain as they are")
+            fmt.Println("Enter your letter: ")
+            scanner.Scan()
+            letter := scanner.Text()
+            Swapped := swapText(letter)
+            fmt.Print(Swapped)
         default:
             fmt.Println("Default")
     }
