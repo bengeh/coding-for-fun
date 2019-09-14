@@ -3,6 +3,15 @@ Just some random codes I did during my spare time
 randomgen.py is an example of how to call an API with python with JSON params
 validity.py is some codes for random challenges found online
 
+
+Each file indicates a language I have used to solve some problems (could be from leetcode/ hackerrank/ etc)
+Go stuff: problems solved with GoLang
+Java stuff: problems solved with Java
+Javascript stuff: problems solved with Javascript
+Python stuff: problems solved with Python
+
+
+
 Need some of these libraries:
 PIL : pip install Pillow
 Rethink : Download from RethinkDB website
