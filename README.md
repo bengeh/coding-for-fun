@@ -10,6 +10,10 @@ Java stuff: problems solved with Java
 Javascript stuff: problems solved with Javascript
 Python stuff: problems solved with Python
 
+There are some questions which I just did on the leetcode/hackerrank website... 
+So... if interested.. 
+leetcode profile: https://leetcode.com/benjamingeh1993/
+hackerrank profile: https://www.hackerrank.com/benjamingeh1993
 
 
 Need some of these libraries:
