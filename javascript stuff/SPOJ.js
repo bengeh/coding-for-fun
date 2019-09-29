@@ -57,7 +57,74 @@ var primeFromMN = function(m, n){
 	return res
 }
 
-console.log(primeFromMN(10,49))
+//console.log(primeFromMN(10,49))
+
+
+
+
+/*
+Check if pattern is substring of text
+Solution: Using KMP algorithm
+*/
+var computeTempKMPArr = function(pattern){
+	var arr = new Array(pattern.length)
+	var index = 0
+	var i = 1
+	while(i < pattern.length){
+		if(pattern[i] == pattern[index]){
+			arr[i] = index + 1
+			index++
+			i++
+		}else{
+			if(index != 0){
+				index = arr[index-1]
+			}else{
+				arr[i] = 0
+				i ++
+			}
+		}
+	}
+	return arr
+}
+
+var isSubStr = function(mainText, comparePattern){
+	var comArr = computeTempKMPArr(comparePattern)
+	var i = 0 
+	var j = 0
+	while(i < mainText.length && j < comparePattern.length){
+		if(mainText[i] == comparePattern[j]){
+			i++
+			j++
+		}else{
+			if(j != 0){
+				j = comArr[j-1]
+			}else{
+				i++
+			}
+		}
+	}
+	if(j == comparePattern.length){
+		return true
+	}
+	return false
+}
+
+console.log(isSubStr('abcdefasds', 'gfe'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
