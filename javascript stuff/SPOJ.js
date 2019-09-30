@@ -109,9 +109,57 @@ var isSubStr = function(mainText, comparePattern){
 	return false
 }
 
-console.log(isSubStr('abcdefasds', 'gfe'))
+//console.log(isSubStr('abcdefasds', 'gfe'))
 
+/*
+next int palidrome
+*/
 
+var nextPalindrome = function(num){
+	num = Array.from(String(num), Number)
+	
+	var size = num.length
+	var mid = Math.floor(size/2)
+	var left = mid - 1
+	var right = (size % 2 == 0) ? mid : mid + 1
+	var leftSmaller = false
+	
+	while(left >= 0 && num[left] == num[right]){
+		left--
+		right++
+	}
+	
+	if(left < 0 || num[left] < num[right]){
+		leftSmaller = true
+	}
+	while(left >= 0){
+		num[right++] = num[left--]
+	}
+	
+	if(leftSmaller){
+		var carry = 1
+		
+		if(size % 2 == 1){
+			num[mid] += 1
+			carry = num[mid]/10
+			num[mid] %= 10
+		}
+		left = mid - 1
+		right = (size%2==0) ? mid : mid + 1
+		while(left >= 0){
+			num[left] = num[left] + carry
+			carry = num[left]/10
+			num[left] %= 10
+			num[right] = num[left]
+			left--
+			right++
+		}
+	}
+	return num
+
+}
+
+console.log(nextPalindrome(783322))
 
 
 
