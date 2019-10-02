@@ -48,6 +48,7 @@ func NewClient() *Client{
 }
 
 //safely navigate through various go routine using channels
+
 func main(){
     client := NewClient()
     go client.subscribeChannels() //first subroutine
