@@ -18,13 +18,12 @@ import (
 */
 
 func printNum() int{
-	fmt.Println("inside find error")
 	nums := []int{1,2,3,4,5}
 	intChan := make(chan int, len(nums)) //Cater to all nums job error channel
 	sem := make(chan int, 4) // 4 jobs running at once
 
-	var wg sync.WaitGroup
-	wg.Add(5)
+	var wg sync.WaitGroup //wait groups blocks any goroutines within the waitgroup, allowing the goroutine to be successfully executed before terminating the program
+	wg.Add(len(nums)) //Add the number of goroutines we want to wait for
 	for i := range nums{
 		go worker(i, sem, &wg, intChan)
 	}
@@ -36,7 +35,7 @@ func printNum() int{
 }
 
 func worker(num int, sem chan int, wg *sync.WaitGroup, intChan chan int){
-	defer wg.Done()
+	defer wg.Done() //call wg.done to signal the end of its' execution
 	sem <- 1
 	fmt.Println(num)
 	<- sem
