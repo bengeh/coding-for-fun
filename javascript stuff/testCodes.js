@@ -17,7 +17,7 @@ function flatten(arr) {
 }
 
 
-flatten([1,2,3,4,[5,4,[4]]])
+// flatten([1,2,3,4,[5,4,[4]]])
 
 
 //permutation
@@ -46,7 +46,7 @@ var helper = function(nums, tmpArr, res, used){
 
 }
 
-permutate([1,2,3])
+// permutate([1,2,3])
 
 
 //permutate string
@@ -67,7 +67,7 @@ var helper = function(prefix, suffix, result){
     }
 }
 
-permutateStr("abc")
+// permutateStr("abc")
 
 
 
@@ -139,3 +139,49 @@ function compressedString(message){
   }
   return res
 }
+
+/*
+  Robot wants to pick strawberries from a bush.
+  Given an integer array arr of length n and an integer num
+  as input where num is the number of strawberries a robot will
+  pick as maximum. Each array element in arr represents the number of
+  strawberries present in each bush and n is the number of bushes.
+  A robot cannot pick from two consecutive bushes and it has to
+  pick the strawberries in such a way that it may not exceed the
+  limit proposed, num. Find the maximum number of strawberries
+  a robot can pick.
+
+  Example:
+  100
+  5
+  50 10 20 30 40
+  output:
+  90
+
+
+*/
+
+function maxStrawberries(numArr, max){
+  var res = 0
+  if(numArr == null || numArr.length == 0){
+    return 0
+  }
+  var helper = function(nums, cur, tmp, m){
+    if(tmp > m){
+      return
+    }
+    res = Math.max(tmp, res)
+    for(var i = 2; i < nums.length; i++){
+      for(var j = cur; j+i < nums.length; j++){
+        helper(nums, i+j, tmp + nums[i + j], m)
+      }
+    }
+  }
+  for(var i = 0; i < numArr.length; i++){
+    helper(numArr, i, numArr[i], max)
+  }
+
+  return res
+}
+
+console.log(maxStrawberries([10,50,10], 100))
