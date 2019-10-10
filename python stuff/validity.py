@@ -1,3 +1,6 @@
+from queue import *
+
+
 #Scenario found online: Given a deck of cards with a value(positive integer) and a suit(lowercase letters)
 #Find if the deck is perfect(all cards in deck are distinct and for any two cards (v1,s1) and (v2,s2), there exist (v1,s2) and (v2,s1)
 
@@ -74,7 +77,42 @@ def primeNo():
 
     return prime
 
-        
+
+#leetcode word ladder
+def ladderLength(beginWord, endWord, wordList) -> int:
+    unvisited = set(wordList)
+    if beginWord in unvisited:
+        unvisited.remove(beginWord)
+    if endWord not in unvisited:
+        return 0
+    
+    distance = 1
+    q = Queue()
+    q.put(beginWord)
+    
+    while q.qsize() != 0:
+        distance += 1
+        size = q.qsize()
+        for i in range(0, size):
+            word = list(q.get())
+            for j in range(0, len(word)):
+                temp = word[j]
+                for k in range(97, 123):
+                    word[j] = chr(k)
+                    nextWord = ''.join(word)
+                    print(nextWord)
+                    if nextWord in unvisited:
+                        print("next word in unvisited")
+                        print(nextWord == endWord)
+                        if nextWord == endWord:
+                            print("the distance is...")
+                            print (distance)
+                            return distance
+                        else:
+                            q.put(nextWord)
+                            unvisited.remove(nextWord)
+                word[j] = temp
+    return 0
 
     
 
@@ -83,4 +121,5 @@ if __name__ == '__main__':
     #validity(3, {1,2,1}, "hch")
     #stringItr("bbaa")
     #listtt()
+    #print(ladderLength("hit", "cog", ["hot","dot","dog","lot","log","cog"]))
     
