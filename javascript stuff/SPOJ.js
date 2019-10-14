@@ -1,4 +1,19 @@
 /*
+TABLE OF CONTENT
+1. afterFortyTwo
+2. primeFromMN
+3. primeFromMN
+4. isSubStr
+5. nextPalindrome
+6. gotFixedPoint
+7. commonElements
+8. canPartition
+9. findPosElement
+10. printCountOfLetter
+11. firstNonRepeatingElement
+12. 
+*/
+/*
 Your program is to use the brute-force approach in order to find the Answer to Life, the Universe, and Everything. 
 More precisely... rewrite small numbers from input to output. Stop processing input after reading in the number 42. 
 All numbers at input are integers of one or two digits.
@@ -112,7 +127,10 @@ var isSubStr = function(mainText, comparePattern){
 //console.log(isSubStr('abcdefasds', 'gfe'))
 
 /*
-next int palidrome
+
+Given a number, find the next smallest palindrome larger than this number. For example, if the input number is “2 3 5 4 5”, the output should be “2 3 6 3 2”.
+ And if the input number is “9 9 9”, the output should be “1 0 0 1”.
+The input is assumed to be an array. Every entry in array represents a digit in input number. Let the array be ‘num[]’ and size of array be ‘n’
 */
 
 var nextPalindrome = function(num){
@@ -328,7 +346,7 @@ var findPosElement = function(matrix){
 Given a string "aaabbbcccdaa" return a3b3c3d1a2
 */
 
-var solution = function(str){
+var printCountOfLetter = function(str){
 	var curChar = str[0]
 	var curCount = 1
 	var res = ''
@@ -347,7 +365,7 @@ var solution = function(str){
 	}
 	return res
 }
-// console.log(solution("aaabbbcccda"))
+// console.log(printCountOfLetter("aaabbbcccda"))
 
 /*
 First non-repeating element in an array
@@ -357,7 +375,7 @@ First non-repeating element in an array
 solonum 2
 */
 
-var solution = function(arr){
+var firstNonRepeatingElement = function(arr){
 	var hashSet = new Map()
 	for(var i = 0; i < arr.length; i++){
 		if(!hashSet.has(arr[i])){
@@ -373,7 +391,64 @@ var solution = function(arr){
 	}
 	return -1
 }
-console.log(solution([-1, 2, -1, 3, 2]))
+// console.log(firstNonRepeatingElement([-1, 2, -1, 3, 2]))
+
+/*
+Given an array, find the minimum absolute difference of the array
+1 -3 71 68 17
+output: 3 (71-68)
+*/
+var minimumAbsoluteDiff = function(arr){
+	res = new Array(arr.length).fill(Number.MAX_SAFE_INTEGER)
+	for(var i = 1; i < arr.length; i++){
+		var j = 0
+		while(j < i){
+			res[i] = Math.min(res[i], Math.abs(arr[j] - arr[i]))
+			j++
+		}
+	}
+	var minVal = Number.MAX_SAFE_INTEGER
+	for(var i = 0; i < res.length; i ++){
+		if(res[i] < minVal){
+			minVal = res[i]
+		}
+	}
+	return minVal
+}
+// console.log(minimumAbsoluteDiff([-59,-36,-13,1,-53,-92,-2,-96,-54,75]))
+
+/*
+Given an array of numbers, arrange them in a way that yields the largest value. 
+For example, if the given numbers are {54, 546, 548, 60}, 
+the arrangement 6054854654 gives the largest value. 
+
+1. the trick here is to extend the given number to the longest number length + 1
+for this case: 5454, 5465, 5485, 6060
+2. sort it in desc order
+3. then print out the original int
+
+*/
+var formBiggestNumber = function(arr){
+	var l = Math.max(...arr).toString().length + 1
+	var temp = ''
+	var extVal = []
+	var extMap = new Map()
+	for(var i = 0; i < arr.length; i++){
+		temp = arr[i].toString().repeat(l)
+		extVal.push(temp.substr(0, l))
+		extMap.set(temp.substr(0, l), arr[i])
+	}
+	extVal.sort((a,b) => (b-a))
+	var res = ''
+	for(var i = 0; i < extVal.length; i++){
+		console.log(extMap.get(extVal[i]))
+		res = res + extMap.get(extVal[i]).toString()
+	}
+	return res
+}
+console.log(formBiggestNumber([54, 546, 548,60]))
+
+
 
 
 
