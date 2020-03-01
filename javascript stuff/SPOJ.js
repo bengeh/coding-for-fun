@@ -11,7 +11,9 @@ TABLE OF CONTENT
 9. findPosElement
 10. printCountOfLetter
 11. firstNonRepeatingElement
-12. 
+12. minimumAbsoluteDiff
+13. formBiggestNumber
+14. 
 */
 /*
 Your program is to use the brute-force approach in order to find the Answer to Life, the Universe, and Everything. 
@@ -446,7 +448,36 @@ var formBiggestNumber = function(arr){
 	}
 	return res
 }
-console.log(formBiggestNumber([54, 546, 548,60]))
+// console.log(formBiggestNumber([54, 546, 548,60]))
+
+var printShape = function(n){
+	for(var i = n/2; i > 0; i--){
+		for(var j = 0; j < i * 2; j++){
+			if(i % 2 == 0){
+				console.log("o")
+			}else{
+				console.log("x")
+			}
+		}
+		console.log("\n")
+	}
+	var k = (2*n) - 2
+	for(var i = 0; i < n/2; i++){
+		for(var j = 0; j < k; j++){
+			k = k - 2
+		}
+		for(var j = 0; j < (i + 1) * 2; j++){
+			if(i % 2 ==0){
+				console.log("x")
+			}else{
+				console.log("o")
+			}
+		}
+		console.log("\n")
+	}
+}
+
+printShape(10)
 
 
 
