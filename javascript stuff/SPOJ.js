@@ -477,11 +477,55 @@ var printShape = function(n){
 	}
 }
 
-printShape(10)
+// printShape(10)
 
 
+/*
+Given number of people and list of timings [checkin, checkout, checkin, checkout...]
+find the timing with the most people
 
+Input: 3, [07:00, 08:00, 06:59, 8:01, 09:00, 10:00]
+Output: 2, 06:59
+*/
 
+var findMaxNumber = function(n, arr) {
+	var checkOut = []
+	var checkIn = []
+	for(var i = 0; i < arr.length; i++) {
+		if(i % 2 ==0){
+			checkIn.push(arr[i])
+		} else{
+			checkOut.push(arr[i])
+		}
+	}
+	sortedCheckIn = checkIn.sort()
+	sortedCheckOut = checkOut.sort()
+	console.log(sortedCheckIn)
+	console.log(sortedCheckOut)
+
+	var guestIn = 1
+	var max = 1
+	var maxTime = ""
+	var i = 1
+	var j = 0
+
+	while(i < sortedCheckIn.length && j < sortedCheckOut.length){
+		if(sortedCheckIn[i] < sortedCheckOut[j]) {
+			guestIn  += 1
+			if(guestIn > max) {
+				max = guestIn
+				maxTime = sortedCheckIn[i]
+			}
+			i  += 1
+		} else {
+			guestIn -=1 
+			j += 1
+		}
+	}
+	return guestIn + " guest at " + maxTime
+}
+
+console.log(findMaxNumber(4, ["07:00:00", "08:00:00", "06:59:00", "08:01:00", "09:00:00", "10:00:00", "07:15:00", "10:00:00"]))
 
 
 
